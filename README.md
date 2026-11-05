@@ -27,8 +27,10 @@ Transacción: Préstamos (id, codigo, libroId, usurioId, fecha, horaInicio, hora
 Regla de negocio minima: Máximo 3 préstamos activos por usuario
 
 
-GENERADOS POR IA:
+**GENERADOS POR IA:**
 
 Colecciones de prueba para Thunder Client y Postman hechos con IA
+
 Validadores en core-js
-EL core.test.js
+
+Las pruebas en core.test.js
