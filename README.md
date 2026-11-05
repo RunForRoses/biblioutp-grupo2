@@ -34,3 +34,5 @@ Colecciones de prueba para Thunder Client y Postman hechos con IA
 Validadores en core-js
 
 Las pruebas en core.test.js
+
+Los CSS hechos por IA(no le sabemos a las decoraciones visuales)
