@@ -1,398 +1,408 @@
 {
-    "usuarios": [
-        {
-            "id": 1,
-            "nombre": "Carlos Mendoza",
-            "correo": "admin1@utp.edu.pe",
-            "codigo": "A0001",
-            "rol": "admin",
-            "password": "admin123"
-        },
-        {
-            "id": 2,
-            "nombre": "Mariana Flores",
-            "correo": "admin2@utp.edu.pe",
-            "codigo": "A0002",
-            "rol": "admin",
-            "password": "admin123"
-        },
-        {
-            "id": 3,
-            "nombre": "Jose Mina",
-            "correo": "u20231234@utp.edu.pe",
-            "codigo": "U20231234",
-            "rol": "estudiante",
-            "password": "est123"
-        },
-        {
-            "id": 4,
-            "nombre": "Manuel Borjas",
-            "correo": "u20224567@utp.edu.pe",
-            "codigo": "U20224567",
-            "rol": "estudiante",
-            "password": "est123"
-        },
-        {
-            "id": 5,
-            "nombre": "Sebastian Huaches",
-            "correo": "u23307645@utp.edu.pe",
-            "codigo": "U23307645",
-            "rol": "estudiante",
-            "password": "est123"
-        },
-        {
-            "id": 6,
-            "nombre": "Gael Chavez",
-            "correo": "u20241122@utp.edu.pe",
-            "codigo": "U20241122",
-            "rol": "estudiante",
-            "password": "est123"
-        },
-        {
-            "id": 7,
-            "nombre": "Justin Cedillo",
-            "correo": "u20239988@utp.edu.pe",
-            "codigo": "U20239988",
-            "rol": "estudiante",
-            "password": "est123"
-        },
-        {
-            "id": 8,
-            "nombre": "Valentino Zuñiga",
-            "correo": "u20205544@utp.edu.pe",
-            "codigo": "U20205544",
-            "rol": "estudiante",
-            "password": "est123"
-        }
-    ],
-    "libros": [
-        {
-            "id": 1,
-            "nombre": "JavaScript: La Guía Definitiva",
-            "sede": "Lima Centro",
-            "capacidad": 15,
-            "formatos": [
-                "Físico",
-                "E-book",
-                "Audiolibro"
-            ],
-            "estado": "disponible"
-        },
-        {
-            "id": 2,
-            "nombre": "Código Limpio: Manual de Estilo Ágil",
-            "sede": "Lima Centro",
-            "capacidad": 20,
-            "formatos": [
-                "Físico",
-                "E-book"
-            ],
-            "estado": "disponible"
-        },
-        {
-            "id": 3,
-            "nombre": "Estructuras de Datos y Algoritmos en JavaScript",
-            "sede": "Lima Sur",
-            "capacidad": 10,
-            "formatos": [
-                "Físico"
-            ],
-            "estado": "disponible"
-        },
-        {
-            "id": 4,
-            "nombre": "Patrones de Diseño de Software",
-            "sede": "Lima Norte",
-            "capacidad": 25,
-            "formatos": [
-                "Físico",
-                "E-book"
-            ],
-            "estado": "disponible"
-        },
-        {
-            "id": 5,
-            "nombre": "Introducción a la Arquitectura de Software",
-            "sede": "San Juan de Lurigancho",
-            "capacidad": 8,
-            "formatos": [
-                "Físico"
-            ],
-            "estado": "agotado"
-        },
-        {
-            "id": 6,
-            "nombre": "Aprende React: De Cero a Producción",
-            "sede": "Lima Centro",
-            "capacidad": 18,
-            "formatos": [
-                "Físico",
-                "E-book"
-            ],
-            "estado": "disponible"
-        },
-        {
-            "id": 7,
-            "nombre": "Desarrollo Web Moderno con Vue.js 3",
-            "sede": "Arequipa",
-            "capacidad": 12,
-            "formatos": [
-                "Físico"
-            ],
-            "estado": "disponible"
-        },
-        {
-            "id": 8,
-            "nombre": "Fundamentos y Diseño de Bases de Datos",
-            "sede": "Lima Sur",
-            "capacidad": 5,
-            "formatos": [
-                "Físico",
-                "E-book"
-            ],
-            "estado": "agotado"
-        }
-    ],
-    "prestamos": [
-        {
-            "id": 1,
-            "codigo": "PRE-0001",
-            "libroId": 1,
-            "usuarioId": 3,
-            "fecha": "2026-11-20",
-            "horaInicio": "08:00",
-            "horaFin": "10:00",
-            "motivo": "Estudio de fundamentos ES6+",
-            "estado": "aprobada",
-            "creadoEn": "2026-11-15T08:00:00Z"
-        },
-        {
-            "id": 2,
-            "codigo": "PRE-0002",
-            "libroId": 2,
-            "usuarioId": 4,
-            "fecha": "2026-11-20",
-            "horaInicio": "10:00",
-            "horaFin": "12:00",
-            "motivo": "Buenas prácticas de programación",
-            "estado": "aprobada",
-            "creadoEn": "2026-11-15T09:30:00Z"
-        },
-        {
-            "id": 3,
-            "codigo": "PRE-0003",
-            "libroId": 3,
-            "usuarioId": 5,
-            "fecha": "2026-11-20",
-            "horaInicio": "14:00",
-            "horaFin": "16:00",
-            "motivo": "Repaso de Closures y Asincronía",
-            "estado": "pendiente",
-            "creadoEn": "2026-11-16T11:00:00Z"
-        },
-        {
-            "id": 4,
-            "codigo": "PRE-0004",
-            "libroId": 1,
-            "usuarioId": 6,
-            "fecha": "2026-11-20",
-            "horaInicio": "11:00",
-            "horaFin": "13:00",
-            "motivo": "Tesis universitaria",
-            "estado": "rechazada",
-            "creadoEn": "2026-11-16T12:00:00Z"
-        },
-        {
-            "id": 5,
-            "codigo": "PRE-0005",
-            "libroId": 4,
-            "usuarioId": 7,
-            "fecha": "2026-11-21",
-            "horaInicio": "09:00",
-            "horaFin": "11:00",
-            "motivo": "Lectura de estructuras de datos",
-            "estado": "aprobada",
-            "creadoEn": "2026-11-16T15:00:00Z"
-        },
-        {
-            "id": 6,
-            "codigo": "PRE-0006",
-            "libroId": 5,
-            "usuarioId": 8,
-            "fecha": "2026-11-21",
-            "horaInicio": "13:00",
-            "horaFin": "15:00",
-            "motivo": "Patrones de diseño en POO",
-            "estado": "rechazada",
-            "creadoEn": "2026-11-17T08:30:00Z"
-        },
-        {
-            "id": 7,
-            "codigo": "PRE-0007",
-            "libroId": 6,
-            "usuarioId": 3,
-            "fecha": "2026-11-21",
-            "horaInicio": "15:00",
-            "horaFin": "17:00",
-            "motivo": "Práctica de Hooks y Componentes",
-            "estado": "pendiente",
-            "creadoEn": "2026-11-17T09:00:00Z"
-        },
-        {
-            "id": 8,
-            "codigo": "PRE-0008",
-            "libroId": 7,
-            "usuarioId": 4,
-            "fecha": "2026-11-22",
-            "horaInicio": "08:00",
-            "horaFin": "10:00",
-            "motivo": "Preparación para laboratorio de Vue",
-            "estado": "aprobada",
-            "creadoEn": "2026-11-17T10:15:00Z"
-        },
-        {
-            "id": 9,
-            "codigo": "PRE-0009",
-            "libroId": 8,
-            "usuarioId": 5,
-            "fecha": "2026-11-22",
-            "horaInicio": "10:00",
-            "horaFin": "12:00",
-            "motivo": "Arquitectura Backend",
-            "estado": "rechazada",
-            "creadoEn": "2026-11-17T11:00:00Z"
-        },
-        {
-            "id": 10,
-            "codigo": "PRE-0010",
-            "libroId": 2,
-            "usuarioId": 6,
-            "fecha": "2026-11-22",
-            "horaInicio": "14:00",
-            "horaFin": "16:00",
-            "motivo": "Refactorización de código legado",
-            "estado": "aprobada",
-            "creadoEn": "2026-11-17T12:00:00Z"
-        },
-        {
-            "id": 11,
-            "codigo": "PRE-0011",
-            "libroId": 3,
-            "usuarioId": 7,
-            "fecha": "2026-11-23",
-            "horaInicio": "09:00",
-            "horaFin": "11:00",
-            "motivo": "Consulta de scopes y prototipos",
-            "estado": "pendiente",
-            "creadoEn": "2026-11-18T08:00:00Z"
-        },
-        {
-            "id": 12,
-            "codigo": "PRE-0012",
-            "libroId": 4,
-            "usuarioId": 8,
-            "fecha": "2026-11-23",
-            "horaInicio": "11:00",
-            "horaFin": "13:00",
-            "motivo": "Ejercicios de programación funcional",
-            "estado": "aprobada",
-            "creadoEn": "2026-11-18T09:20:00Z"
-        },
-        {
-            "id": 13,
-            "codigo": "PRE-0013",
-            "libroId": 1,
-            "usuarioId": 3,
-            "fecha": "2026-11-23",
-            "horaInicio": "16:00",
-            "horaFin": "18:00",
-            "motivo": "Preparación de examen",
-            "estado": "aprobada",
-            "creadoEn": "2026-11-18T10:00:00Z"
-        },
-        {
-            "id": 14,
-            "codigo": "PRE-0014",
-            "libroId": 2,
-            "usuarioId": 4,
-            "fecha": "2026-11-24",
-            "horaInicio": "08:00",
-            "horaFin": "10:00",
-            "motivo": "Estudio de principios SOLID",
-            "estado": "pendiente",
-            "creadoEn": "2026-11-18T11:15:00Z"
-        },
-        {
-            "id": 15,
-            "codigo": "PRE-0015",
-            "libroId": 6,
-            "usuarioId": 5,
-            "fecha": "2026-11-24",
-            "horaInicio": "10:00",
-            "horaFin": "12:00",
-            "motivo": "Manejo de estado global",
-            "estado": "aprobada",
-            "creadoEn": "2026-11-18T13:00:00Z"
-        },
-        {
-            "id": 16,
-            "codigo": "PRE-0016",
-            "libroId": 7,
-            "usuarioId": 6,
-            "fecha": "2026-11-24",
-            "horaInicio": "13:00",
-            "horaFin": "15:00",
-            "motivo": "Componentes y Reactividad en Vue",
-            "estado": "rechazada",
-            "creadoEn": "2026-11-18T14:30:00Z"
-        },
-        {
-            "id": 17,
-            "codigo": "PRE-0017",
-            "libroId": 3,
-            "usuarioId": 7,
-            "fecha": "2026-11-25",
-            "horaInicio": "09:00",
-            "horaFin": "11:00",
-            "motivo": "Revisión de tipos y gramática JS",
-            "estado": "aprobada",
-            "creadoEn": "2026-11-19T08:00:00Z"
-        },
-        {
-            "id": 18,
-            "codigo": "PRE-0018",
-            "libroId": 4,
-            "usuarioId": 8,
-            "fecha": "2026-11-25",
-            "horaInicio": "11:00",
-            "horaFin": "13:00",
-            "motivo": "Canvas y gráficos en JavaScript",
-            "estado": "pendiente",
-            "creadoEn": "2026-11-19T09:40:00Z"
-        },
-        {
-            "id": 19,
-            "codigo": "PRE-0019",
-            "libroId": 1,
-            "usuarioId": 4,
-            "fecha": "2026-11-25",
-            "horaInicio": "15:00",
-            "horaFin": "17:00",
-            "motivo": "Consulta de Web APIs",
-            "estado": "aprobada",
-            "creadoEn": "2026-11-19T10:10:00Z"
-        },
-        {
-            "id": 20,
-            "codigo": "PRE-0020",
-            "libroId": 2,
-            "usuarioId": 5,
-            "fecha": "2026-11-25",
-            "horaInicio": "17:00",
-            "horaFin": "19:00",
-            "motivo": "Code smells y refactorización",
-            "estado": "pendiente",
-            "creadoEn": "2026-11-19T11:00:00Z"
-        }
-    ]
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Carlos Mendoza",
+      "correo": "admin1@utp.edu.pe",
+      "codigo": "A0001",
+      "rol": "admin",
+      "password": "admin123"
+    },
+    {
+      "id": 2,
+      "nombre": "Mariana Flores",
+      "correo": "admin2@utp.edu.pe",
+      "codigo": "A0002",
+      "rol": "admin",
+      "password": "admin123"
+    },
+    {
+      "id": 3,
+      "nombre": "Jose Mina",
+      "correo": "u20231234@utp.edu.pe",
+      "codigo": "U20231234",
+      "rol": "estudiante",
+      "password": "est123"
+    },
+    {
+      "id": 4,
+      "nombre": "Manuel Borjas",
+      "correo": "u20224567@utp.edu.pe",
+      "codigo": "U20224567",
+      "rol": "estudiante",
+      "password": "est123"
+    },
+    {
+      "id": 5,
+      "nombre": "Sebastian Huaches",
+      "correo": "u23307645@utp.edu.pe",
+      "codigo": "U23307645",
+      "rol": "estudiante",
+      "password": "est123"
+    },
+    {
+      "id": 6,
+      "nombre": "Gael Chavez",
+      "correo": "u20241122@utp.edu.pe",
+      "codigo": "U20241122",
+      "rol": "estudiante",
+      "password": "est123"
+    },
+    {
+      "id": 7,
+      "nombre": "Justin Cedillo",
+      "correo": "u20239988@utp.edu.pe",
+      "codigo": "U20239988",
+      "rol": "estudiante",
+      "password": "est123"
+    },
+    {
+      "id": 8,
+      "nombre": "Valentino Zuñiga",
+      "correo": "u20205544@utp.edu.pe",
+      "codigo": "U20205544",
+      "rol": "estudiante",
+      "password": "est123"
+    }
+  ],
+  "libros": [
+    {
+      "id": 1,
+      "nombre": "JavaScript: La Guía Definitiva",
+      "sede": "Lima Centro",
+      "capacidad": 15,
+      "formatos": [
+        "Físico",
+        "E-book",
+        "Audiolibro"
+      ],
+      "estado": "disponible"
+    },
+    {
+      "id": 2,
+      "nombre": "Código Limpio: Manual de Estilo Ágil",
+      "sede": "Lima Centro",
+      "capacidad": 20,
+      "formatos": [
+        "Físico",
+        "E-book"
+      ],
+      "estado": "disponible"
+    },
+    {
+      "id": 3,
+      "nombre": "Estructuras de Datos y Algoritmos en JavaScript",
+      "sede": "Lima Sur",
+      "capacidad": 10,
+      "formatos": [
+        "Físico"
+      ],
+      "estado": "disponible"
+    },
+    {
+      "id": 4,
+      "nombre": "Patrones de Diseño de Software",
+      "sede": "Lima Norte",
+      "capacidad": 25,
+      "formatos": [
+        "Físico",
+        "E-book"
+      ],
+      "estado": "disponible"
+    },
+    {
+      "id": 5,
+      "nombre": "Introducción a la Arquitectura de Software",
+      "sede": "San Juan de Lurigancho",
+      "capacidad": 8,
+      "formatos": [
+        "Físico"
+      ],
+      "estado": "agotado"
+    },
+    {
+      "id": 6,
+      "nombre": "Aprende React: De Cero a Producción",
+      "sede": "Lima Centro",
+      "capacidad": 18,
+      "formatos": [
+        "Físico",
+        "E-book"
+      ],
+      "estado": "disponible"
+    },
+    {
+      "id": 7,
+      "nombre": "Desarrollo Web Moderno con Vue.js 3",
+      "sede": "Arequipa",
+      "capacidad": 12,
+      "formatos": [
+        "Físico"
+      ],
+      "estado": "disponible"
+    },
+    {
+      "id": 8,
+      "nombre": "Fundamentos y Diseño de Bases de Datos",
+      "sede": "Lima Sur",
+      "capacidad": 5,
+      "formatos": [
+        "Físico",
+        "E-book"
+      ],
+      "estado": "agotado"
+    },
+    {
+      "nombre": "Poemas Literarios",
+      "sede": "Ate",
+      "capacidad": 10,
+      "formatos": [
+        "Físico"
+      ],
+      "estado": "disponible",
+      "id": 9
+    }
+  ],
+  "prestamos": [
+    {
+      "id": 1,
+      "codigo": "PRE-0001",
+      "libroId": 1,
+      "usuarioId": 3,
+      "fecha": "2026-11-20",
+      "horaInicio": "08:00",
+      "horaFin": "10:00",
+      "motivo": "Estudio de fundamentos ES6+",
+      "estado": "aprobada",
+      "creadoEn": "2026-11-15T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "codigo": "PRE-0002",
+      "libroId": 2,
+      "usuarioId": 4,
+      "fecha": "2026-11-20",
+      "horaInicio": "10:00",
+      "horaFin": "12:00",
+      "motivo": "Buenas prácticas de programación",
+      "estado": "aprobada",
+      "creadoEn": "2026-11-15T09:30:00Z"
+    },
+    {
+      "id": 3,
+      "codigo": "PRE-0003",
+      "libroId": 3,
+      "usuarioId": 5,
+      "fecha": "2026-11-20",
+      "horaInicio": "14:00",
+      "horaFin": "16:00",
+      "motivo": "Repaso de Closures y Asincronía",
+      "estado": "pendiente",
+      "creadoEn": "2026-11-16T11:00:00Z"
+    },
+    {
+      "id": 4,
+      "codigo": "PRE-0004",
+      "libroId": 1,
+      "usuarioId": 6,
+      "fecha": "2026-11-20",
+      "horaInicio": "11:00",
+      "horaFin": "13:00",
+      "motivo": "Tesis universitaria",
+      "estado": "rechazada",
+      "creadoEn": "2026-11-16T12:00:00Z"
+    },
+    {
+      "id": 5,
+      "codigo": "PRE-0005",
+      "libroId": 4,
+      "usuarioId": 7,
+      "fecha": "2026-11-21",
+      "horaInicio": "09:00",
+      "horaFin": "11:00",
+      "motivo": "Lectura de estructuras de datos",
+      "estado": "aprobada",
+      "creadoEn": "2026-11-16T15:00:00Z"
+    },
+    {
+      "id": 6,
+      "codigo": "PRE-0006",
+      "libroId": 5,
+      "usuarioId": 8,
+      "fecha": "2026-11-21",
+      "horaInicio": "13:00",
+      "horaFin": "15:00",
+      "motivo": "Patrones de diseño en POO",
+      "estado": "rechazada",
+      "creadoEn": "2026-11-17T08:30:00Z"
+    },
+    {
+      "id": 7,
+      "codigo": "PRE-0007",
+      "libroId": 6,
+      "usuarioId": 3,
+      "fecha": "2026-11-21",
+      "horaInicio": "15:00",
+      "horaFin": "17:00",
+      "motivo": "Práctica de Hooks y Componentes",
+      "estado": "pendiente",
+      "creadoEn": "2026-11-17T09:00:00Z"
+    },
+    {
+      "id": 8,
+      "codigo": "PRE-0008",
+      "libroId": 7,
+      "usuarioId": 4,
+      "fecha": "2026-11-22",
+      "horaInicio": "08:00",
+      "horaFin": "10:00",
+      "motivo": "Preparación para laboratorio de Vue",
+      "estado": "aprobada",
+      "creadoEn": "2026-11-17T10:15:00Z"
+    },
+    {
+      "id": 9,
+      "codigo": "PRE-0009",
+      "libroId": 8,
+      "usuarioId": 5,
+      "fecha": "2026-11-22",
+      "horaInicio": "10:00",
+      "horaFin": "12:00",
+      "motivo": "Arquitectura Backend",
+      "estado": "rechazada",
+      "creadoEn": "2026-11-17T11:00:00Z"
+    },
+    {
+      "id": 10,
+      "codigo": "PRE-0010",
+      "libroId": 2,
+      "usuarioId": 6,
+      "fecha": "2026-11-22",
+      "horaInicio": "14:00",
+      "horaFin": "16:00",
+      "motivo": "Refactorización de código legado",
+      "estado": "aprobada",
+      "creadoEn": "2026-11-17T12:00:00Z"
+    },
+    {
+      "id": 11,
+      "codigo": "PRE-0011",
+      "libroId": 3,
+      "usuarioId": 7,
+      "fecha": "2026-11-23",
+      "horaInicio": "09:00",
+      "horaFin": "11:00",
+      "motivo": "Consulta de scopes y prototipos",
+      "estado": "pendiente",
+      "creadoEn": "2026-11-18T08:00:00Z"
+    },
+    {
+      "id": 12,
+      "codigo": "PRE-0012",
+      "libroId": 4,
+      "usuarioId": 8,
+      "fecha": "2026-11-23",
+      "horaInicio": "11:00",
+      "horaFin": "13:00",
+      "motivo": "Ejercicios de programación funcional",
+      "estado": "aprobada",
+      "creadoEn": "2026-11-18T09:20:00Z"
+    },
+    {
+      "id": 13,
+      "codigo": "PRE-0013",
+      "libroId": 1,
+      "usuarioId": 3,
+      "fecha": "2026-11-23",
+      "horaInicio": "16:00",
+      "horaFin": "18:00",
+      "motivo": "Preparación de examen",
+      "estado": "aprobada",
+      "creadoEn": "2026-11-18T10:00:00Z"
+    },
+    {
+      "id": 14,
+      "codigo": "PRE-0014",
+      "libroId": 2,
+      "usuarioId": 4,
+      "fecha": "2026-11-24",
+      "horaInicio": "08:00",
+      "horaFin": "10:00",
+      "motivo": "Estudio de principios SOLID",
+      "estado": "pendiente",
+      "creadoEn": "2026-11-18T11:15:00Z"
+    },
+    {
+      "id": 15,
+      "codigo": "PRE-0015",
+      "libroId": 6,
+      "usuarioId": 5,
+      "fecha": "2026-11-24",
+      "horaInicio": "10:00",
+      "horaFin": "12:00",
+      "motivo": "Manejo de estado global",
+      "estado": "aprobada",
+      "creadoEn": "2026-11-18T13:00:00Z"
+    },
+    {
+      "id": 16,
+      "codigo": "PRE-0016",
+      "libroId": 7,
+      "usuarioId": 6,
+      "fecha": "2026-11-24",
+      "horaInicio": "13:00",
+      "horaFin": "15:00",
+      "motivo": "Componentes y Reactividad en Vue",
+      "estado": "rechazada",
+      "creadoEn": "2026-11-18T14:30:00Z"
+    },
+    {
+      "id": 17,
+      "codigo": "PRE-0017",
+      "libroId": 3,
+      "usuarioId": 7,
+      "fecha": "2026-11-25",
+      "horaInicio": "09:00",
+      "horaFin": "11:00",
+      "motivo": "Revisión de tipos y gramática JS",
+      "estado": "aprobada",
+      "creadoEn": "2026-11-19T08:00:00Z"
+    },
+    {
+      "id": 18,
+      "codigo": "PRE-0018",
+      "libroId": 4,
+      "usuarioId": 8,
+      "fecha": "2026-11-25",
+      "horaInicio": "11:00",
+      "horaFin": "13:00",
+      "motivo": "Canvas y gráficos en JavaScript",
+      "estado": "pendiente",
+      "creadoEn": "2026-11-19T09:40:00Z"
+    },
+    {
+      "id": 19,
+      "codigo": "PRE-0019",
+      "libroId": 1,
+      "usuarioId": 4,
+      "fecha": "2026-11-25",
+      "horaInicio": "15:00",
+      "horaFin": "17:00",
+      "motivo": "Consulta de Web APIs",
+      "estado": "aprobada",
+      "creadoEn": "2026-11-19T10:10:00Z"
+    },
+    {
+      "id": 20,
+      "codigo": "PRE-0020",
+      "libroId": 2,
+      "usuarioId": 5,
+      "fecha": "2026-11-25",
+      "horaInicio": "17:00",
+      "horaFin": "19:00",
+      "motivo": "Code smells y refactorización",
+      "estado": "pendiente",
+      "creadoEn": "2026-11-19T11:00:00Z"
+    }
+  ]
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LibrosService } from '../libros.service';
@@ -13,6 +13,7 @@ import { Libro } from '../libro';
 })
 export class LibrosListaComponent implements OnInit {
   private readonly librosService = inject(LibrosService);
+  private readonly cdr = inject(ChangeDetectorRef);
   libros: Libro[] = [];
   cargando = true;
   error = '';
@@ -22,10 +23,12 @@ export class LibrosListaComponent implements OnInit {
       next: (libros) => {
         this.libros = libros;
         this.cargando = false;
+        this.cdr.detectChanges();
       },
       error: () => {
         this.error = 'No se pudo cargar el catálogo. Verifica que api-mock esté activo.';
         this.cargando = false;
+        this.cdr.detectChanges();
       },
     });
   }
