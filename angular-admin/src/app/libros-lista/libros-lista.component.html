@@ -31,7 +31,7 @@
         </thead>
         <tbody>
           @for (libro of libros; track libro.id) {
-            <tr>
+            <tr [appResaltarAgotado]="libro.estado">
               <td class="book-name">{{ libro.nombre }}</td>
               <td>{{ libro.sede }}</td>
               <td>{{ libro.capacidad }}</td>

@@ -11,6 +11,7 @@ import { LibrosService } from '../libros.service';
 import { Router } from '@angular/router';
 import { Libro } from '../libro';
 import { TitleCasePipe } from '@angular/common';
+import { validadorSedeRegex } from '../validadores/validadores';
 
 @Component({
   selector: 'app-libro-form',
@@ -37,11 +38,8 @@ export class LibroFormComponent {
 
   readonly formulario = this.formBuilder.nonNullable.group({
     nombre: ['', [Validators.required, Validators.maxLength(120)]],
-    sede: ['', [Validators.required, Validators.maxLength(80)]],
-    capacidad: [
-      1,
-      [Validators.required, Validators.min(1), Validators.max(60), this.enteroPositivo],
-    ],
+    sede: ['', [Validators.required, Validators.maxLength(80), validadorSedeRegex()]],
+    capacidad: [1, [Validators.required, Validators.min(1), Validators.max(60), this.enteroPositivo]],
     formatos: this.formBuilder.nonNullable.array<string>([], Validators.required),
     estado: ['disponible' as (typeof this.estados)[number], Validators.required],
   });

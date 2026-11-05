@@ -3,11 +3,12 @@ import { NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LibrosService } from '../libros.service';
 import { Libro } from '../libro';
+import { ResaltarAgotadoDirective } from '../directivas/resaltar-agotado';
 
 @Component({
   selector: 'app-libros-lista',
   standalone: true,
-  imports: [NgClass, RouterLink],
+  imports: [NgClass, RouterLink, ResaltarAgotadoDirective],
   templateUrl: './libros-lista.component.html',
   styleUrl: './libros-lista.component.css',
 })
