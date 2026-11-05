@@ -1,0 +1,32 @@
+import { Component, OnInit, inject } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { LibrosService } from '../libros.service';
+import { Libro } from '../libro';
+
+@Component({
+  selector: 'app-libros-lista',
+  standalone: true,
+  imports: [NgClass, RouterLink],
+  templateUrl: './libros-lista.component.html',
+  styleUrl: './libros-lista.component.css',
+})
+export class LibrosListaComponent implements OnInit {
+  private readonly librosService = inject(LibrosService);
+  libros: Libro[] = [];
+  cargando = true;
+  error = '';
+
+  ngOnInit(): void {
+    this.librosService.listar().subscribe({
+      next: (libros) => {
+        this.libros = libros;
+        this.cargando = false;
+      },
+      error: () => {
+        this.error = 'No se pudo cargar el catálogo. Verifica que api-mock esté activo.';
+        this.cargando = false;
+      },
+    });
+  }
+}

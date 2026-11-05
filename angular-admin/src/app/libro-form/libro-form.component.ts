@@ -23,7 +23,7 @@ export class LibroFormComponent {
   private readonly formBuilder = inject(FormBuilder);
   private readonly librosService = inject(LibrosService);
   private readonly router = inject(Router);
-  readonly estados = ['disponible', 'agotado', 'mantenimiento'] as const;
+  readonly estados = ['disponible', 'agotado'] as const;
   readonly formatosDisponibles = ['Físico', 'E-book', 'Audiolibro'] as const;
   enviado = false;
 
@@ -87,7 +87,7 @@ export class LibroFormComponent {
     this.librosService.crear(datos).subscribe({
       next: () => {
         alert('Libro registrado correctamente.');
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/libros');
       },
       error: (error) => {
         console.error('Error al guardar el libro:', error);
