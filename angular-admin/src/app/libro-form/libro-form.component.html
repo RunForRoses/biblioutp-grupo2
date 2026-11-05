@@ -2,7 +2,9 @@
   <header class="form-header">
     <div>
       <p class="eyebrow">CATÁLOGO</p>
-      <h2 id="form-title">Registrar libro</h2>
+      <h2 id="form-title">
+        {{ esEdicion ? 'Editar libro' : 'Registrar libro' }}
+      </h2>
       <p class="description">Completa la información del libro y su disponibilidad.</p>
     </div>
     <span class="required-note">* Campos obligatorios</span>
@@ -72,10 +74,14 @@
         }
       </select>
     </div>
-
+    @if (error) {
+      <p class="field-error" role="alert">{{ error }}</p>
+    }
     <footer class="form-actions">
       <button class="button-secondary" type="button" (click)="limpiar()">Limpiar</button>
-      <button class="button-primary" type="submit">Guardar libro</button>
+      <button class="button-primary" type="submit">
+        {{ esEdicion ? 'Guardar cambios' : 'Guardar libro' }}
+      </button>
     </footer>
   </form>
 </section>

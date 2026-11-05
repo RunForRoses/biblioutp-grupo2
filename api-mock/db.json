@@ -171,16 +171,6 @@
       ],
       "estado": "disponible",
       "id": 10
-    },
-    {
-      "nombre": "asdasdas",
-      "sede": "lima este",
-      "capacidad": 1,
-      "formatos": [
-        "Físico"
-      ],
-      "estado": "disponible",
-      "id": 11
     }
   ],
   "prestamos": [

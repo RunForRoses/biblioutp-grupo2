@@ -4,5 +4,5 @@ export interface Libro {
   sede: string;
   capacidad: number;
   formatos: string[];
-  estado: string;
+  estado: 'disponible' | 'agotado';
 }

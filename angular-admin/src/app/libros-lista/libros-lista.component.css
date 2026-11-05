@@ -128,3 +128,30 @@ td {
     flex-wrap: wrap;
   }
 }
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button-edit,
+.button-delete {
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 7px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button-edit {
+  color: #176b3b;
+  background: #e8f7ed;
+}
+
+.button-delete {
+  color: #a33333;
+  background: #fdecec;
+}

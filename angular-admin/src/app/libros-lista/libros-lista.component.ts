@@ -33,4 +33,19 @@ export class LibrosListaComponent implements OnInit {
       },
     });
   }
+  eliminarLibro(libro: Libro): void {
+    const confirmar = confirm(`¿Eliminar el libro "${libro.nombre}"?`);
+
+    if (!confirmar) return;
+
+    this.librosService.eliminar(libro.id).subscribe({
+      next: () => {
+        this.libros = this.libros.filter((item) => item.id !== libro.id);
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.error = 'No se pudo eliminar el libro.';
+      },
+    });
+  }
 }
