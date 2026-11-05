@@ -1,5 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
+import { LibrosService } from '../libros.service';
+import { Router } from '@angular/router';
 import { Libro } from '../libro';
 import { TitleCasePipe } from '@angular/common';
 
@@ -12,15 +21,27 @@ import { TitleCasePipe } from '@angular/common';
 })
 export class LibroFormComponent {
   private readonly formBuilder = inject(FormBuilder);
-
+  private readonly librosService = inject(LibrosService);
+  private readonly router = inject(Router);
   readonly estados = ['disponible', 'agotado', 'mantenimiento'] as const;
   readonly formatosDisponibles = ['Físico', 'E-book', 'Audiolibro'] as const;
   enviado = false;
 
+  private enteroPositivo(control: AbstractControl): ValidationErrors | null {
+    const valor = control.value;
+
+    if (valor === null || valor === '') return null;
+
+    return Number.isInteger(Number(valor)) ? null : { entero: true };
+  }
+
   readonly formulario = this.formBuilder.nonNullable.group({
     nombre: ['', [Validators.required, Validators.maxLength(120)]],
     sede: ['', [Validators.required, Validators.maxLength(80)]],
-    capacidad: [1, [Validators.required, Validators.min(1), Validators.max(60)]],
+    capacidad: [
+      1,
+      [Validators.required, Validators.min(1), Validators.max(60), this.enteroPositivo],
+    ],
     formatos: this.formBuilder.nonNullable.array<string>([], Validators.required),
     estado: ['disponible' as (typeof this.estados)[number], Validators.required],
   });
@@ -43,15 +64,35 @@ export class LibroFormComponent {
     this.formatos.markAsTouched();
   }
 
+  limpiar(): void {
+    this.formatos.clear();
+    this.formulario.reset({
+      nombre: '',
+      sede: '',
+      capacidad: 1,
+      estado: 'disponible',
+    });
+    this.enviado = false;
+  }
   guardar(): void {
     this.enviado = true;
+
     if (this.formulario.invalid) {
       this.formulario.markAllAsTouched();
       return;
     }
 
     const datos: Omit<Libro, 'id'> = this.formulario.getRawValue();
-    // Propuesta: aquí el componente padre/servicio recibiría `datos` para crear el libro.
-    console.log('Libro listo para guardar:', datos);
+
+    this.librosService.crear(datos).subscribe({
+      next: () => {
+        alert('Libro registrado correctamente.');
+        this.router.navigateByUrl('/');
+      },
+      error: (error) => {
+        console.error('Error al guardar el libro:', error);
+        alert('No se pudo guardar. Verifica que api-mock esté corriendo.');
+      },
+    });
   }
 }

@@ -11,4 +11,7 @@ export class LibrosService {
   listar(): Observable<Libro[]> {
     return this.http.get<Libro[]>(this.apiUrl);
   }
+  crear(libro: Omit<Libro, 'id'>): Observable<Libro> {
+    return this.http.post<Libro>(this.apiUrl, libro);
+  }
 }

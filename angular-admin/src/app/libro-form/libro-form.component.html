@@ -38,8 +38,16 @@
       <label for="capacidad">Cantidad de ejemplares <span aria-hidden="true">*</span></label>
       <input id="capacidad" type="number" min="1" max="60" formControlName="capacidad" />
       <small class="hint">Ingresa un número entre 1 y 60.</small>
-      @if (formulario.controls.capacidad.touched && formulario.controls.capacidad.invalid) {
-        <small class="field-error">La cantidad debe ser un número entero entre 1 y 60.</small>
+      @if (
+        formulario.controls.capacidad.touched && formulario.controls.capacidad.hasError('required')
+      ) {
+        <small class="field-error">Ingresa la cantidad de ejemplares.</small>
+      } @else if (
+        formulario.controls.capacidad.touched && formulario.controls.capacidad.hasError('entero')
+      ) {
+        <small class="field-error">La cantidad debe ser un número entero.</small>
+      } @else if (formulario.controls.capacidad.touched && formulario.controls.capacidad.invalid) {
+        <small class="field-error">Ingresa un número entre 1 y 60.</small>
       }
     </div>
 
@@ -72,22 +80,7 @@
     </div>
 
     <footer class="form-actions">
-      <button
-        class="button-secondary"
-        type="reset"
-        (click)="
-          formulario.reset({
-            nombre: '',
-            sede: '',
-            capacidad: 1,
-            formatos: [],
-            estado: 'disponible',
-          });
-          enviado = false
-        "
-      >
-        Limpiar
-      </button>
+      <button class="button-secondary" type="button" (click)="limpiar()">Limpiar</button>
       <button class="button-primary" type="submit">Guardar libro</button>
     </footer>
   </form>
