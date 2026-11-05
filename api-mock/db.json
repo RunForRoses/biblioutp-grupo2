@@ -153,14 +153,34 @@
       "estado": "agotado"
     },
     {
-      "nombre": "Poemas Literarios",
-      "sede": "Ate",
-      "capacidad": 10,
+      "nombre": "The Road to React",
+      "sede": "lima este",
+      "capacidad": 1,
       "formatos": [
         "Físico"
       ],
       "estado": "disponible",
       "id": 9
+    },
+    {
+      "nombre": "Learning React: Modern Patterns for Developing React Apps",
+      "sede": "lima sur",
+      "capacidad": 3,
+      "formatos": [
+        "Físico"
+      ],
+      "estado": "disponible",
+      "id": 10
+    },
+    {
+      "nombre": "asdasdas",
+      "sede": "lima este",
+      "capacidad": 1,
+      "formatos": [
+        "Físico"
+      ],
+      "estado": "disponible",
+      "id": 11
     }
   ],
   "prestamos": [
