@@ -89,7 +89,10 @@ td {
 }
 .badge {
   display: inline-flex;
-  padding: 5px 9px;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  padding: 5px 10px;
   border-radius: 99px;
   font-size: 12px;
   font-weight: 650;

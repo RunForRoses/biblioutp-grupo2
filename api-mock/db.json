@@ -67,7 +67,6 @@
   ],
   "libros": [
     {
-      "id": 1,
       "nombre": "JavaScript: La Guía Definitiva",
       "sede": "Lima Centro",
       "capacidad": 15,
@@ -76,7 +75,8 @@
         "E-book",
         "Audiolibro"
       ],
-      "estado": "disponible"
+      "estado": "agotado",
+      "id": 1
     },
     {
       "id": 2,
@@ -90,17 +90,16 @@
       "estado": "disponible"
     },
     {
-      "id": 3,
       "nombre": "Estructuras de Datos y Algoritmos en JavaScript",
       "sede": "Lima Sur",
       "capacidad": 10,
       "formatos": [
         "Físico"
       ],
-      "estado": "disponible"
+      "estado": "disponible",
+      "id": 3
     },
     {
-      "id": 4,
       "nombre": "Patrones de Diseño de Software",
       "sede": "Lima Norte",
       "capacidad": 25,
@@ -108,7 +107,8 @@
         "Físico",
         "E-book"
       ],
-      "estado": "disponible"
+      "estado": "agotado",
+      "id": 4
     },
     {
       "id": 5,

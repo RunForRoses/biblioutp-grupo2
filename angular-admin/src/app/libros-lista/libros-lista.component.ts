@@ -4,11 +4,12 @@ import { RouterLink } from '@angular/router';
 import { LibrosService } from '../libros.service';
 import { Libro } from '../libro';
 import { ResaltarAgotadoDirective } from '../directivas/resaltar-agotado';
+import { FormatearEstadoPipe } from '../pipes/formatear-estado.pipe';
 
 @Component({
   selector: 'app-libros-lista',
   standalone: true,
-  imports: [NgClass, RouterLink, ResaltarAgotadoDirective],
+  imports: [NgClass, RouterLink, ResaltarAgotadoDirective, FormatearEstadoPipe],
   templateUrl: './libros-lista.component.html',
   styleUrl: './libros-lista.component.css',
 })
