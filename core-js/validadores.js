@@ -15,10 +15,6 @@ export function esCodigoAlumno(codigo) {
 /**
  * 3. Validador de Hora
  * Regla: Desde 00:00 hasta 23:59
- * Explicación del patrón:
- *   ([01]\d|2[0-3]) -> Horas: 00 a 19, o 20 a 23
- *   :               -> Los dos puntos obligatorios
- *   [0-5]\d         -> Minutos: 00 a 59
  */
 const patronHora = /^([01]\d|2[0-3]):[0-5]\d$/;
 
@@ -29,7 +25,6 @@ export function esHoraValida(hora) {
 
 /**
  * 4. Validador de Fecha (AAAA-MM-DD)
- * Regla: Año de 4 dígitos, mes de 01 a 12, día de 01 a 31
  */
 const patronFecha = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
 
@@ -38,31 +33,84 @@ export function esFechaValida(fecha) {
     return patronFecha.test(fecha.trim());
 }
 
-export function validarDatosPrestamo(datos) {
+/**
+ * Función utilitaria para convertir "08:30" en 510 minutos totales del día
+ */
+export function horaAMinutos(horaStr) {
+    if (!horaStr || typeof horaStr !== 'string') return 0;
+    const [horas, minutos] = horaStr.split(':').map(Number);
+    return horas * 60 + minutos;
+}
+
+/**
+ * ALGORITMO DE CRUCE: Comprueba si el libro físico ya está separado en ese rango horario
+ */
+export function hayCruceDePrestamo(nuevoPrestamo, prestamosExistentes) {
+    const nuevoInicio = horaAMinutos(nuevoPrestamo.horaInicio);
+    const nuevoFin = horaAMinutos(nuevoPrestamo.horaFin);
+
+    return prestamosExistentes.some((existente) => {
+        // Si estamos EDITANDO un préstamo, ignoramos su propio ID para que no colisione consigo mismo
+        if (nuevoPrestamo.id && existente.id === nuevoPrestamo.id) return false;
+
+        // Solo hay conflicto si es el mismo libro, la misma fecha exacta y el préstamo está activo
+        if (existente.libroId !== nuevoPrestamo.libroId || existente.fecha !== nuevoPrestamo.fecha) {
+            return false;
+        }
+
+        const extInicio = horaAMinutos(existente.horaInicio);
+        const extFin = horaAMinutos(existente.horaFin);
+
+        // Fórmula matemática de superposición horaria
+        return nuevoInicio < extFin && nuevoFin > extInicio;
+    });
+}
+
+/**
+ * Función unificadora para la validación del Formulario de Préstamos
+ * @param {Object} datos - Estado controlado del formulario ({ correo, codigo, fecha, horaInicio, horaFin, libroId })
+ * @param {Array} prestamosExistentes - Lista de préstamos actuales consumida desde tu api-mock
+ */
+export function validarDatosPrestamo(datos, prestamosExistentes = []) {
     const listaErrores = [];
 
-    // Validar correo
+    // 1. Validaciones estructurales básicas (Regex)
     if (!esCorreoUTP(datos.correo)) {
         listaErrores.push(`El correo "${datos.correo}" no es válido. Debe ser institucional (@utp.edu.pe).`);
     }
 
-    // Validar codigo
     if (!esCodigoAlumno(datos.codigo)) {
         listaErrores.push(`El código "${datos.codigo}" es inválido. Debe iniciar con U y tener 8 dígitos numéricos.`);
     }
 
-    // Validar fecha
     if (!esFechaValida(datos.fecha)) {
         listaErrores.push(`La fecha "${datos.fecha}" no cumple el formato requerido AAAA-MM-DD.`);
     }
 
-    // Validar horas
-    if (!esHoraValida(datos.horaInicio)) {
+    const inicioValido = esHoraValida(datos.horaInicio);
+    const finValida = esHoraValida(datos.horaFin);
+
+    if (!inicioValido) {
         listaErrores.push(`La hora de inicio "${datos.horaInicio}" debe tener formato HH:mm (ejemplo: 08:30).`);
     }
 
-    if (!esHoraValida(datos.horaFin)) {
+    if (!finValida) {
         listaErrores.push(`La hora de fin "${datos.horaFin}" debe tener formato HH:mm (ejemplo: 10:30).`);
+    }
+
+    // 2. Validaciones de negocio horarias (Se ejecutan solo si los strings de hora son válidos)
+    if (inicioValido && finValida) {
+        const minutosInicio = horaAMinutos(datos.horaInicio);
+        const minutosFin = horaAMinutos(datos.horaFin);
+
+        // Regla: La hora final debe ser posterior al inicio
+        if (minutosInicio >= minutosFin) {
+            listaErrores.push("La hora de inicio debe ser estrictamente menor que la hora de devolución.");
+        } 
+        // Regla de Bloqueo: El libro físico no puede duplicarse en el mismo tiempo
+        else if (hayCruceDePrestamo(datos, prestamosExistentes)) {
+            listaErrores.push("Este ejemplar ya se encuentra reservado o prestado por otro alumno en el horario seleccionado.");
+        }
     }
 
     return {
