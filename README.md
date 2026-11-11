@@ -10,11 +10,9 @@ BiblioUTP - Sistema de Préstamos Bibliotecarios
 
 -Omar Sebastián Huaches
 
--Howard Jhon Uscamayta Chipana
+-Josef Chavez Bernuy
 
--Josef Chavez
-
--Bryan Mendoza
+-Bryan Mendoza Cahuana
 
 
 
