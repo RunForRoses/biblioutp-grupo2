@@ -4,7 +4,8 @@ export function BadgeEstado({ estado }) {
         agotado: 'bg-secondary',
         aprobada: 'bg-success',
         pendiente: 'bg-warning text-dark',
-        rechazada: 'bg-danger'
+        rechazada: 'bg-danger',
+        devuelto: 'bg-primary'
     };
 
     const claseBadge = mapaEstilos[estado?.toLowerCase()] || 'bg-info text-dark';

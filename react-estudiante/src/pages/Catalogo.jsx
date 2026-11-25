@@ -1,12 +1,33 @@
 import { useState, useEffect } from 'react';
 import { ListaLibros } from '../components/ListaLibros';
+import { obtenerCatalogo } from '../services/catalogoFetch.js';
 
-export function Catalogo({ libros = [] }) {
+export function Catalogo() {
+    const [libros, setLibros] = useState([]);
+    const [cargando, setCargando] = useState(true);
+    const [error, setError] = useState(null);
     const [busqueda, setBusqueda] = useState('');
     const [sedeSeleccionada, setSedeSeleccionada] = useState('todas');
 
+    const cargarLibros = async () => {
+        setCargando(true);
+        setError(null);
+        try {
+            const data = await obtenerCatalogo();
+            setLibros(data);
+        } catch (err) {
+            setError(err.message || 'No se pudo cargar el catálogo.');
+        } finally {
+            setCargando(false);
+        }
+    };
+
     useEffect(() => {
         document.title = 'BiblioUTP - Catálogo de Libros';
+        obtenerCatalogo()
+            .then((data) => setLibros(data))
+            .catch((err) => setError(err.message || 'No se pudo cargar el catálogo.'))
+            .finally(() => setCargando(false));
     }, []);
 
     const librosFiltrados = libros.filter((libro) => {
@@ -49,7 +70,19 @@ export function Catalogo({ libros = [] }) {
                 </div>
             </div>
 
-            <ListaLibros libros={librosFiltrados} />
+            {cargando ? (
+                <div className="text-center py-5">
+                    <div className="spinner-border text-danger" role="status" />
+                    <p className="text-muted mt-2">Cargando catálogo desde el API...</p>
+                </div>
+            ) : error ? (
+                <div className="alert alert-danger d-flex justify-content-between align-items-center">
+                    <span>{error}</span>
+                    <button className="btn btn-sm btn-outline-danger" onClick={cargarLibros}>Reintentar</button>
+                </div>
+            ) : (
+                <ListaLibros libros={librosFiltrados} />
+            )}
         </div>
     );
 }

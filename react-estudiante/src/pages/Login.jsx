@@ -10,6 +10,7 @@ export function Login() {
     const [password, setPassword] = useState('est123');
     const [error, setError] = useState(null);
     const [avisoAdmin, setAvisoAdmin] = useState(false);
+    const [enviando, setEnviando] = useState(false);
 
     useEffect(() => {
         document.title = 'BiblioUTP - Iniciar Sesión';
@@ -18,19 +19,18 @@ export function Login() {
         }
     }, [estaAutenticado, navigate]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
         setAvisoAdmin(false);
-
-        const res = login(identificador, password);
+        setEnviando(true);
+        const res = await login(identificador, password);
+        setEnviando(false);
         if (res.exito) {
             navigate('/catalogo');
         } else {
             setError(res.mensaje);
-            if (res.esAdmin) {
-                setAvisoAdmin(true);
-            }
+            if (res.esAdmin) setAvisoAdmin(true);
         }
     };
 
@@ -78,8 +78,8 @@ export function Login() {
                         />
                         <div className="form-text small">Demo estudiante: pass <code>est123</code></div>
                     </div>
-                    <button type="submit" className="btn btn-danger w-100 py-2 fw-bold">
-                        Ingresar a BiblioUTP
+                    <button type="submit" disabled={enviando} className="btn btn-danger w-100 py-2 fw-bold">
+                        {enviando ? 'Verificando...' : 'Ingresar a BiblioUTP'}
                     </button>
                 </form>
             </div>

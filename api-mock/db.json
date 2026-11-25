@@ -183,7 +183,7 @@
       "horaInicio": "08:00",
       "horaFin": "10:00",
       "motivo": "Estudio de fundamentos ES6+",
-      "estado": "aprobada",
+      "estado": "devuelto",
       "creadoEn": "2026-11-15T08:00:00Z"
     },
     {
@@ -207,7 +207,7 @@
       "horaInicio": "14:00",
       "horaFin": "16:00",
       "motivo": "Repaso de Closures y Asincronía",
-      "estado": "pendiente",
+      "estado": "rechazada",
       "creadoEn": "2026-11-16T11:00:00Z"
     },
     {
@@ -245,18 +245,6 @@
       "motivo": "Patrones de diseño en POO",
       "estado": "rechazada",
       "creadoEn": "2026-11-17T08:30:00Z"
-    },
-    {
-      "id": 7,
-      "codigo": "PRE-0007",
-      "libroId": 6,
-      "usuarioId": 3,
-      "fecha": "2026-11-21",
-      "horaInicio": "15:00",
-      "horaFin": "17:00",
-      "motivo": "Práctica de Hooks y Componentes",
-      "estado": "pendiente",
-      "creadoEn": "2026-11-17T09:00:00Z"
     },
     {
       "id": 8,
@@ -303,7 +291,7 @@
       "horaInicio": "09:00",
       "horaFin": "11:00",
       "motivo": "Consulta de scopes y prototipos",
-      "estado": "pendiente",
+      "estado": "rechazada",
       "creadoEn": "2026-11-18T08:00:00Z"
     },
     {
@@ -327,7 +315,7 @@
       "horaInicio": "16:00",
       "horaFin": "18:00",
       "motivo": "Preparación de examen",
-      "estado": "aprobada",
+      "estado": "devuelto",
       "creadoEn": "2026-11-18T10:00:00Z"
     },
     {
@@ -339,7 +327,7 @@
       "horaInicio": "08:00",
       "horaFin": "10:00",
       "motivo": "Estudio de principios SOLID",
-      "estado": "pendiente",
+      "estado": "aprobada",
       "creadoEn": "2026-11-18T11:15:00Z"
     },
     {
@@ -387,7 +375,7 @@
       "horaInicio": "11:00",
       "horaFin": "13:00",
       "motivo": "Canvas y gráficos en JavaScript",
-      "estado": "pendiente",
+      "estado": "rechazada",
       "creadoEn": "2026-11-19T09:40:00Z"
     },
     {
@@ -411,8 +399,56 @@
       "horaInicio": "17:00",
       "horaFin": "19:00",
       "motivo": "Code smells y refactorización",
-      "estado": "pendiente",
+      "estado": "rechazada",
       "creadoEn": "2026-11-19T11:00:00Z"
+    },
+    {
+      "libroId": 7,
+      "correo": "u20231234@utp.edu.pe",
+      "codigo": "PRE-6175",
+      "formato": "Físico",
+      "fecha": "2026-11-25",
+      "horaInicio": "16:00",
+      "horaFin": "17:00",
+      "motivo": "Tengo que estudiar",
+      "usuarioId": 3,
+      "nombreUsuario": "Luis Quispe",
+      "libro": "Desarrollo Web Moderno con Vue.js 3",
+      "estado": "devuelto",
+      "creadoEn": "2026-11-25T20:20:24.919Z",
+      "id": 21
+    },
+    {
+      "libroId": 9,
+      "correo": "u20231234@utp.edu.pe",
+      "codigo": "PRE-9357",
+      "formato": "Físico",
+      "fecha": "2026-11-25",
+      "horaInicio": "08:00",
+      "horaFin": "10:00",
+      "motivo": "XD",
+      "usuarioId": 3,
+      "nombreUsuario": "Luis Quispe",
+      "libro": "The Road to React",
+      "estado": "devuelto",
+      "creadoEn": "2026-11-25T22:03:50.377Z",
+      "id": 22
+    },
+    {
+      "libroId": 1,
+      "correo": "u20231234@utp.edu.pe",
+      "codigo": "PRE-5789",
+      "formato": "Físico",
+      "fecha": "2026-11-25",
+      "horaInicio": "08:00",
+      "horaFin": "10:00",
+      "motivo": "XD",
+      "usuarioId": 3,
+      "nombreUsuario": "Luis Quispe",
+      "libro": "JavaScript: La Guía Definitiva",
+      "estado": "devuelto",
+      "creadoEn": "2026-11-25T22:04:31.617Z",
+      "id": 23
     }
   ]
 }

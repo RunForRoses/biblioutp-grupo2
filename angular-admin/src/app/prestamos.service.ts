@@ -11,4 +11,8 @@ export class PrestamosService {
   listar(): Observable<Prestamo[]> {
     return this.http.get<Prestamo[]>(this.apiUrl);
   }
+
+  cambiarEstado(id: number, estado: 'aprobada' | 'rechazada' | 'devuelto'): Observable<Prestamo> {
+    return this.http.patch<Prestamo>(`${this.apiUrl}/${id}`, { estado });
+  }
 }

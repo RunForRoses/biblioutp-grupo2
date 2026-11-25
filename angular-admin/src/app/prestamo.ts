@@ -3,10 +3,13 @@ export interface Prestamo {
   codigo: string;
   libroId: number;
   usuarioId: number;
+  libro?: string;
+  nombreUsuario?: string;
+  formato?: string;
   fecha: string;
   horaInicio: string;
   horaFin: string;
   motivo: string;
-  estado: 'pendiente' | 'aprobada' | 'rechazada';
+  estado: 'pendiente' | 'aprobada' | 'rechazada' | 'devuelto';
   creadoEn: string;
 }

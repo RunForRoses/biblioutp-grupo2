@@ -11,15 +11,17 @@ export class FormatearEstadoPipe implements PipeTransform {
     const estado = valor.toLowerCase().trim();
     switch (estado) {
       case 'disponible':
-        return '🟢 Disponible';
+        return '🟢\u00A0Disponible';
       case 'agotado':
-        return '🔴 Agotado';
+        return '🔴\u00A0Agotado';
       case 'aprobada':
-        return '✅ Aprobada';
+        return '✅\u00A0Aprobada';
       case 'pendiente':
-        return '⏳ Pendiente';
+        return '⏳\u00A0Pendiente';
       case 'rechazada':
-        return '❌ Rechazada';
+        return '❌\u00A0Rechazada';
+      case 'devuelto':
+        return '🔵\u00A0Devuelto';
       default:
         return valor.charAt(0).toUpperCase() + valor.slice(1);
     }

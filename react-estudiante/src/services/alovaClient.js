@@ -13,7 +13,7 @@ export const alovaInstance = createAlova({
 });
 
 export const getResumenEstudiante = (usuarioId) =>
-  alovaInstance.Get(`/reservas?usuarioId=${usuarioId}`, {
+  alovaInstance.Get(`/prestamos?usuarioId=${usuarioId}`, {
     name: `resumen-${usuarioId}`,
-    cacheFor: 60 * 1000, // Caché activo por 1 minuto
+    cacheFor: 60 * 1000,
   });

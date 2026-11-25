@@ -1,21 +1,46 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { BadgeEstado } from '../components/BadgeEstado';
+import { obtenerDetalleLibro } from '../services/catalogoFetch.js';
 
-export function DetalleLibro({ libros }) {
+export function DetalleLibro() {
     const { id } = useParams();
-    const libro = libros.find((l) => l.id === Number(id));
+    const [libro, setLibro] = useState(null);
+    const [cargando, setCargando] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        document.title = libro ? `BiblioUTP - ${libro.nombre}` : 'BiblioUTP - Libro';
-    }, [libro]);
+        const cargarDetalle = async () => {
+            setCargando(true);
+            setError(null);
+            try {
+                const data = await obtenerDetalleLibro(id);
+                setLibro(data);
+                document.title = `BiblioUTP - ${data.nombre}`;
+            } catch (err) {
+                setError(err.message);
+                document.title = 'BiblioUTP - Libro no encontrado';
+            } finally {
+                setCargando(false);
+            }
+        };
+        cargarDetalle();
+    }, [id]);
 
-    if (!libro) {
+    if (cargando) {
         return (
             <div className="container py-5 text-center">
-                <h3>Libro no encontrado</h3>
-                <p className="text-muted">El ejemplar solicitado no existe o fue retirado del catálogo.</p>
-                <Link to="/catalogo" className="btn btn-primary mt-3">Volver al Catálogo</Link>
+                <div className="spinner-border text-danger" role="status" />
+                <p className="text-muted mt-2">Cargando detalle del libro...</p>
+            </div>
+        );
+    }
+
+    if (error || !libro) {
+        return (
+            <div className="container py-5 text-center">
+                <div className="alert alert-danger">{error || 'Libro no encontrado'}</div>
+                <Link to="/catalogo" className="btn btn-primary mt-2">Volver al Catálogo</Link>
             </div>
         );
     }
@@ -41,7 +66,7 @@ export function DetalleLibro({ libros }) {
 
                 <h5 className="fw-semibold">Formatos de Préstamo Disponibles:</h5>
                 <ul className="list-group list-group-flush mb-4">
-                    {libro.formatos.map((fmt, idx) => (
+                    {libro.formatos?.map((fmt, idx) => (
                         <li key={idx} className="list-group-item ps-0">✓ {fmt}</li>
                     ))}
                 </ul>

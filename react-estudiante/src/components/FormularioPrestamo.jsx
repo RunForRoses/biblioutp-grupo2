@@ -24,7 +24,7 @@ export function FormularioPrestamo({ libroInicial, libros = [], prestamosExisten
         setForm(prev => ({ ...prev, [name]: name === 'libroId' ? Number(value) : value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const prestamosActivos = prestamosExistentes.filter(
             p => p.usuarioId === usuario?.id && (p.estado === 'aprobada' || p.estado === 'pendiente')
@@ -43,16 +43,20 @@ export function FormularioPrestamo({ libroInicial, libros = [], prestamosExisten
         }
 
         const libroSeleccionado = libros.find(l => l.id === Number(form.libroId)) || libroInicial;
-        onGuardar({
-            ...form,
-            id: Date.now(),
-            codigo: `PRE-${Math.floor(1000 + Math.random() * 9000)}`,
-            usuarioId: usuario.id,
-            nombreUsuario: usuario.nombre,
-            libro: libroSeleccionado?.nombre || 'Libro BiblioUTP',
-            estado: 'pendiente'
-        });
-        setErrores([]);
+        try {
+            await onGuardar({
+                ...form,
+                codigo: `PRE-${Math.floor(1000 + Math.random() * 9000)}`,
+                usuarioId: usuario.id,
+                nombreUsuario: usuario.nombre,
+                libro: libroSeleccionado?.nombre || 'Libro BiblioUTP',
+                estado: 'pendiente',
+                creadoEn: new Date().toISOString()
+            });
+            setErrores([]);
+        } catch (err) {
+            setErrores([err.message || 'No se pudo registrar el préstamo.']);
+        }
         primerCampoRef.current?.focus();
     };
 

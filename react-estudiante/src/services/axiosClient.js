@@ -12,9 +12,9 @@ axiosClient.interceptors.response.use(
     
     if (error.response) {
       const { status } = error.response;
-      if (status === 400) mensajeUsuario = 'Datos de reserva inválidos. Verifica la información.';
+      if (status === 400) mensajeUsuario = 'Datos de préstamo inválidos. Verifica la información.';
       else if (status === 404) mensajeUsuario = 'El recurso o reserva no fue encontrado.';
-      else if (status === 409) mensajeUsuario = 'Este libro ya tiene una reserva activa.';
+      else if (status === 409) mensajeUsuario = 'Este libro ya tiene un prestano activo.';
       else if (status >= 500) mensajeUsuario = 'Error interno del servidor. Intenta más tarde.';
     }
     

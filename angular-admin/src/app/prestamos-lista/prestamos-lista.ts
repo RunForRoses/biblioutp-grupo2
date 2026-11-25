@@ -1,12 +1,14 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
-import { JsonPipe } from '@angular/common';
+import { NgClass } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { PrestamosService } from '../prestamos.service';
 import { Prestamo } from '../prestamo';
+import { FormatearEstadoPipe } from '../pipes/formatear-estado.pipe';
 
 @Component({
   selector: 'app-prestamos-lista',
   standalone: true,
-  imports: [JsonPipe],
+  imports: [NgClass, FormsModule, FormatearEstadoPipe],
   templateUrl: './prestamos-lista.html',
   styleUrl: './prestamos-lista.css',
 })
@@ -15,8 +17,20 @@ export class PrestamosListaComponent implements OnInit {
   private readonly cdr = inject(ChangeDetectorRef);
 
   prestamos: Prestamo[] = [];
+  busqueda = '';
   cargando = true;
   error = '';
+
+  get prestamosFiltrados(): Prestamo[] {
+    const termino = this.busqueda.trim().toLowerCase();
+    if (!termino) return this.prestamos;
+    return this.prestamos.filter(
+      (p) =>
+        p.codigo.toLowerCase().includes(termino) ||
+        (p.nombreUsuario || '').toLowerCase().includes(termino) ||
+        `usuario #${p.usuarioId}`.includes(termino)
+    );
+  }
 
   ngOnInit(): void {
     this.prestamosService.listar().subscribe({
@@ -28,6 +42,19 @@ export class PrestamosListaComponent implements OnInit {
       error: () => {
         this.error = 'No se pudieron cargar los préstamos. Verifica que api-mock esté activo.';
         this.cargando = false;
+        this.cdr.detectChanges();
+      },
+    });
+  }
+
+  actualizarEstado(prestamo: Prestamo, nuevoEstado: 'aprobada' | 'rechazada' | 'devuelto'): void {
+    this.prestamosService.cambiarEstado(prestamo.id, nuevoEstado).subscribe({
+      next: (actualizado) => {
+        prestamo.estado = actualizado.estado;
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.error = `No se pudo actualizar el préstamo ${prestamo.codigo}.`;
         this.cdr.detectChanges();
       },
     });

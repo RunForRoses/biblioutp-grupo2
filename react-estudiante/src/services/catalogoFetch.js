@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000'; // Ajusta el puerto de tu JSON Server o backend
+const BASE_URL = 'http://localhost:3000';
 
 export const obtenerCatalogo = async () => {
   const response = await fetch(`${BASE_URL}/libros`);
