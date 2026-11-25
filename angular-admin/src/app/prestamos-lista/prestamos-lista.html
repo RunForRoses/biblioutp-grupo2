@@ -5,7 +5,10 @@
       <h1>Préstamos</h1>
       <p class="intro">Aprueba, rechaza o marca como devueltos los préstamos de los estudiantes.</p>
     </div>
-    <span class="count">{{ prestamosFiltrados.length }} de {{ prestamos.length }} préstamos</span>
+    <div class="heading-actions">
+      <button class="btn-refresh" type="button" (click)="cargarPrestamos(false)">🔄 Actualizar</button>
+      <span class="count">{{ prestamosFiltrados.length }} de {{ prestamos.length }} préstamos</span>
+    </div>
   </div>
 
   <div class="search-bar">

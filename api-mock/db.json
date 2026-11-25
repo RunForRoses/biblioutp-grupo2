@@ -195,7 +195,7 @@
       "horaInicio": "10:00",
       "horaFin": "12:00",
       "motivo": "Buenas prácticas de programación",
-      "estado": "aprobada",
+      "estado": "devuelto",
       "creadoEn": "2026-11-15T09:30:00Z"
     },
     {
@@ -231,7 +231,7 @@
       "horaInicio": "09:00",
       "horaFin": "11:00",
       "motivo": "Lectura de estructuras de datos",
-      "estado": "aprobada",
+      "estado": "devuelto",
       "creadoEn": "2026-11-16T15:00:00Z"
     },
     {
@@ -255,7 +255,7 @@
       "horaInicio": "08:00",
       "horaFin": "10:00",
       "motivo": "Preparación para laboratorio de Vue",
-      "estado": "aprobada",
+      "estado": "devuelto",
       "creadoEn": "2026-11-17T10:15:00Z"
     },
     {
@@ -279,7 +279,7 @@
       "horaInicio": "14:00",
       "horaFin": "16:00",
       "motivo": "Refactorización de código legado",
-      "estado": "aprobada",
+      "estado": "devuelto",
       "creadoEn": "2026-11-17T12:00:00Z"
     },
     {
@@ -303,7 +303,7 @@
       "horaInicio": "11:00",
       "horaFin": "13:00",
       "motivo": "Ejercicios de programación funcional",
-      "estado": "aprobada",
+      "estado": "devuelto",
       "creadoEn": "2026-11-18T09:20:00Z"
     },
     {
@@ -327,7 +327,7 @@
       "horaInicio": "08:00",
       "horaFin": "10:00",
       "motivo": "Estudio de principios SOLID",
-      "estado": "aprobada",
+      "estado": "devuelto",
       "creadoEn": "2026-11-18T11:15:00Z"
     },
     {
@@ -339,7 +339,7 @@
       "horaInicio": "10:00",
       "horaFin": "12:00",
       "motivo": "Manejo de estado global",
-      "estado": "aprobada",
+      "estado": "devuelto",
       "creadoEn": "2026-11-18T13:00:00Z"
     },
     {
@@ -363,7 +363,7 @@
       "horaInicio": "09:00",
       "horaFin": "11:00",
       "motivo": "Revisión de tipos y gramática JS",
-      "estado": "aprobada",
+      "estado": "devuelto",
       "creadoEn": "2026-11-19T08:00:00Z"
     },
     {
@@ -387,7 +387,7 @@
       "horaInicio": "15:00",
       "horaFin": "17:00",
       "motivo": "Consulta de Web APIs",
-      "estado": "aprobada",
+      "estado": "devuelto",
       "creadoEn": "2026-11-19T10:10:00Z"
     },
     {
@@ -449,6 +449,22 @@
       "estado": "devuelto",
       "creadoEn": "2026-11-25T22:04:31.617Z",
       "id": 23
+    },
+    {
+      "libroId": 7,
+      "correo": "u20231234@utp.edu.pe",
+      "codigo": "PRE-9553",
+      "formato": "Físico",
+      "fecha": "2026-11-25",
+      "horaInicio": "09:00",
+      "horaFin": "10:00",
+      "motivo": "xd",
+      "usuarioId": 3,
+      "nombreUsuario": "Luis Quispe",
+      "libro": "Desarrollo Web Moderno con Vue.js 3",
+      "estado": "pendiente",
+      "creadoEn": "2026-11-25T22:26:49.470Z",
+      "id": 24
     }
   ]
 }

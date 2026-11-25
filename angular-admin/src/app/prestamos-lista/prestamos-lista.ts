@@ -1,5 +1,5 @@
-import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
-import { NgClass } from '@angular/common';
+import { Component, OnInit, OnDestroy, inject, ChangeDetectorRef, PLATFORM_ID } from '@angular/core';
+import { NgClass, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PrestamosService } from '../prestamos.service';
 import { Prestamo } from '../prestamo';
@@ -12,9 +12,11 @@ import { FormatearEstadoPipe } from '../pipes/formatear-estado.pipe';
   templateUrl: './prestamos-lista.html',
   styleUrl: './prestamos-lista.css',
 })
-export class PrestamosListaComponent implements OnInit {
+export class PrestamosListaComponent implements OnInit, OnDestroy {
   private readonly prestamosService = inject(PrestamosService);
   private readonly cdr = inject(ChangeDetectorRef);
+  private readonly platformId = inject(PLATFORM_ID);
+  private intervaloId: ReturnType<typeof setInterval> | null = null;
 
   prestamos: Prestamo[] = [];
   busqueda = '';
@@ -33,14 +35,31 @@ export class PrestamosListaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cargarPrestamos(false);
+    if (isPlatformBrowser(this.platformId)) {
+      this.intervaloId = setInterval(() => this.cargarPrestamos(true), 5000);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.intervaloId) {
+      clearInterval(this.intervaloId);
+    }
+  }
+
+  cargarPrestamos(silencioso = false): void {
+    if (!silencioso) this.cargando = true;
     this.prestamosService.listar().subscribe({
       next: (datos) => {
         this.prestamos = datos;
         this.cargando = false;
+        this.error = '';
         this.cdr.detectChanges();
       },
       error: () => {
-        this.error = 'No se pudieron cargar los préstamos. Verifica que api-mock esté activo.';
+        if (!silencioso) {
+          this.error = 'No se pudieron cargar los préstamos. Verifica que api-mock esté activo.';
+        }
         this.cargando = false;
         this.cdr.detectChanges();
       },
