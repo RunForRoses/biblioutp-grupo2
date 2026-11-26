@@ -462,9 +462,41 @@
       "usuarioId": 3,
       "nombreUsuario": "Luis Quispe",
       "libro": "Desarrollo Web Moderno con Vue.js 3",
-      "estado": "pendiente",
+      "estado": "devuelto",
       "creadoEn": "2026-11-25T22:26:49.470Z",
       "id": 24
+    },
+    {
+      "libroId": 1,
+      "correo": "u20231234@utp.edu.pe",
+      "codigo": "PRE-1991",
+      "formato": "Físico",
+      "fecha": "2026-11-26",
+      "horaInicio": "08:00",
+      "horaFin": "10:00",
+      "motivo": "XDDD",
+      "usuarioId": 3,
+      "nombreUsuario": "Luis Quispe",
+      "libro": "JavaScript: La Guía Definitiva",
+      "estado": "rechazada",
+      "creadoEn": "2026-11-25T23:37:49.251Z",
+      "id": 25
+    },
+    {
+      "libroId": 1,
+      "correo": "u20231234@utp.edu.pe",
+      "codigo": "PRE-7108",
+      "formato": "Físico",
+      "fecha": "2026-11-27",
+      "horaInicio": "08:00",
+      "horaFin": "10:00",
+      "motivo": "Tengo que estudiar",
+      "usuarioId": 3,
+      "nombreUsuario": "Luis Quispe",
+      "libro": "JavaScript: La Guía Definitiva",
+      "estado": "rechazada",
+      "creadoEn": "2026-11-25T23:38:21.476Z",
+      "id": 26
     }
   ]
 }

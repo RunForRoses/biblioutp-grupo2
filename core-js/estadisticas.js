@@ -26,7 +26,7 @@ export const obtenerSedesUnicas = (libros) => {
   return Array.from(sedesSet);
 };
 
-//Ranking de libros más prestados
+//Ranking de libros mas prestados
 export const rankingLibrosMasPrestados = (prestamos, libros) => {
   const conteos = calcularOcupacionPorLibro(prestamos);
 
@@ -39,7 +39,7 @@ export const rankingLibrosMasPrestados = (prestamos, libros) => {
     .sort((a, b) => b.totalPrestamos - a.totalPrestamos);
 };
 
-//Generador de codigos usando closure y padStart (como en el simulacro pasado XD)
+//Generador de codigos usando closure y padStart
 export const crearGeneradorCodigo = (prefijo = "PRE", inicio = 1) => {
   let contador = inicio;
   return () => {
@@ -48,4 +48,44 @@ export const crearGeneradorCodigo = (prefijo = "PRE", inicio = 1) => {
     contador += 1;
     return codigoGenerado;
   };
+};
+
+// Genera los encabezados de hora
+export const obtenerHorasGrilla = (horaInicio = 7, horaFin = 22) => {
+  const horas = [];
+  for (let h = horaInicio; h < horaFin; h++) {
+    horas.push(`${String(h).padStart(2, "0")}:00`);
+  }
+  return horas;
+};
+
+const aMinutos = (hhmm) => {
+  const [h, m] = hhmm.split(":").map(Number);
+  return h * 60 + m;
+};
+
+// Construye la matriz libro x hora (libre | pendiente | ocupada)
+export const construirGrillaDisponibilidad = (libros, prestamos, fecha, horaInicio = 7, horaFin = 22) => {
+  const horas = obtenerHorasGrilla(horaInicio, horaFin);
+
+  return libros.map((libro) => {
+    const celdas = horas.map((horaStr, idx) => {
+      const slotInicio = (horaInicio + idx) * 60;
+      const slotFin = slotInicio + 60;
+
+      const cruce = prestamos.find((p) => {
+        if (p.libroId !== libro.id || p.fecha !== fecha) return false;
+        if (p.estado === "rechazada" || p.estado === "devuelto") return false;
+        return aMinutos(p.horaInicio) < slotFin && slotInicio < aMinutos(p.horaFin);
+      });
+
+      let estado = "libre";
+      if (cruce?.estado === "aprobada") estado = "ocupada";
+      else if (cruce?.estado === "pendiente") estado = "pendiente";
+
+      return { hora: horaStr, estado, prestamo: cruce || null, libro };
+    });
+
+    return { libro, celdas };
+  });
 };
