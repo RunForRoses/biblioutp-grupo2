@@ -497,6 +497,22 @@
       "estado": "rechazada",
       "creadoEn": "2026-11-25T23:38:21.476Z",
       "id": 26
+    },
+    {
+      "libroId": 2,
+      "correo": "u20231234@utp.edu.pe",
+      "codigo": "PRE-6041",
+      "formato": "Físico",
+      "fecha": "2026-11-26",
+      "horaInicio": "08:00",
+      "horaFin": "10:00",
+      "motivo": "xd",
+      "usuarioId": 3,
+      "nombreUsuario": "Jose Mina",
+      "libro": "Código Limpio: Manual de Estilo Ágil",
+      "estado": "pendiente",
+      "creadoEn": "2026-11-26T01:13:14.408Z",
+      "id": 27
     }
   ]
 }
